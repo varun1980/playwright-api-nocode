@@ -1,0 +1,36 @@
+openapi: "3.0.3"
+info:
+  title: Simple Login API
+  version: "1.0"
+paths:
+  /login:
+    post:
+      summary: Login endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '400':
+          description: Missing fields
+        '401':
+          description: Invalid credentials
